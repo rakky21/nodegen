@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/rakky21/nodegen/issues"
   },
-  "homepage": "https://github.com/rakky21/nodegen#readme"
+  "homepage": "https://github.com/rakky21/nodegen#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
 }

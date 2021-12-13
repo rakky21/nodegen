@@ -1,7 +1,8 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs')
-const generateMarkdown = require('./ut/generateMarkdown')
+// const generateMarkdown = require('./ut/generateMarkdown')
+const writeFile = require('./ut/writeFile')
 // TODO: Include packages needed for this application
 
 // TODO: Create an array of questions for user input
@@ -9,32 +10,29 @@ const questions = [
     {
         // ask the questions here
         type: 'input',
-        Name: 'username',
-        Comment: 'WHat is your github username?',
+        name: 'title',
+        message: 'What is the projects title?',
     },
     {
-        // ask the questions here
         type: 'input',
-        Name: 'GitHubusername',
-        checkbox: ['ONE', 'TWO', 'THREE'],
+        name: 'username',
+        message: 'What is your username?',
     },
     {
-        // ask the questions here
         type: 'input',
-        Name: 'GitHubusername',
-        checkbox: ['ONE', 'TWO', 'THREE'],
+        name: 'GitHubusername',
+        message: 'What is your GitHub username?',
     },
     {
-        // ask the questions here
         type: 'input',
-        Name: 'username',
-        choices: ['GMU', 'AJAX','JAVA'],
+        name: 'description',
+        message: 'What is this application for?',
     },
     {
         type: 'list',
         name: 'license',
-        message: 'Which license do you want to use?',
-        choices: ['',]
+        message: 'Which license are you using?',
+        choices: ['MIT', 'APACHE_2.0', 'GPL_3.0', 'None'],
     }
 ];
 
@@ -43,10 +41,14 @@ function writeToFile(fileName, data) { }
 
 // TODO: Create a function to initialize app
 function init() {
+    console.log('hello');
     inquirer
-        .prompt([questions])
+        .prompt(questions)
         .then((answers) => {
             console.log(answers);
+            // var markdown = generateMarkdown(answers)
+            // console.log(markdown);
+            writeFile(answers)
         })
         .catch((error) => {
             if (error.isTtyError) {
@@ -55,6 +57,7 @@ function init() {
                 // Something else went wrong
             }
         });
+        
 } 
 
 // Function call to initialize app

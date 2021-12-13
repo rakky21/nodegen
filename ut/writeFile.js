@@ -1,14 +1,5 @@
 const fs = require('fs');
-function generateMarkdown(data) {
-    return `# ${data.title}
-    ##Description
-    ${data.description}
-    ##Contact
-    https://github.com/${data.username}
-    ##License
-    ${data.license}
-    `;
-}
+const generateMarkdown = require('./generateMarkdown');
 
 function writeFile(data) {
     fs.writeFile('README.md', generateMarkdown(data), function(err) {
@@ -18,4 +9,4 @@ function writeFile(data) {
     });
 }
 
-module.exports = {writeFile};
+module.exports = writeFile;
